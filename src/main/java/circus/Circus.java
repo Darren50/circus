@@ -8,6 +8,10 @@ import circus.animal.Tiger;
 import circus.animal.Animal;
 import circus.animal.Duck;
 import circus.animal.Parrot;
+import circus.animal.*;
+
+import java.util.ArrayList;
+import java.util.Arrays;
 
 public class Circus {
     private static Animal[] animals = {
@@ -42,8 +46,47 @@ public class Circus {
     }
 
     public static void main(String[] args) {
-        makeAnimalsTalk();
-        System.out.println("Total value of animals " + calculateAssetValue(animals));
-        System.out.println("Total value of equipments " + calculateAssetValue(equipments));
+
+
+        System.out.println("Number of animals in the circus: " + animals.length);
+
+//        for(Animal a : animals){
+//            System.out.println(a);
+//        }
+
+
+
+//        animals[3] = new Elephant("StrongOne");
+
+        System.out.println("Number of animals in the circus: " + animals.length);
+        ArrayList<Animal> animalArrayList = new ArrayList<>(Arrays.asList(animals));
+//        printAllAnimals(animalArrayList);
+        animalArrayList.add(new Elephant("StrongOne"));
+
+        System.out.println("Add a new elephant");
+        System.out.println("Number of animals in the circus: " + animalArrayList.size());
+        printAllAnimals(animalArrayList);
+
+
+        Parrot andy = new Parrot("Andy");
+
+        animalArrayList.add(andy);
+        System.out.println("Number of animals in the circus: " + animalArrayList.size());
+        System.out.println("Before sorting:");
+        printAllAnimals(animalArrayList);
+
+
+        animalArrayList.sort(Animal.animalNameComparator);
+        System.out.println("After sorting: ");
+        printAllAnimals(animalArrayList);
+//        makeAnimalsTalk();
+//        System.out.println("Total value of animals " + calculateAssetValue(animals));
+//        System.out.println("Total value of equipments " + calculateAssetValue(equipments));
+    }
+
+    private static void printAllAnimals(ArrayList<Animal> animals) {
+        for(Animal a: animals){
+            System.out.println(a);
+        }
     }
 }
